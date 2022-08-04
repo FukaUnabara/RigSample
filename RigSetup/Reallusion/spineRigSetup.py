@@ -33,7 +33,7 @@ class SpineRigSetup(IRigSetup):
         self.__rig.setup_fk()
 
         self.__rig.create_ik_joints(self.__spine.joints)
-        self.__rig.setup_ik(self.__spine.joint_waist, self.__spine.joint_spine2, self.__spine.joint_neck)
+        self.__rig.setup_ik()
 
         self.setup_transform_blend()
         self.setup_rotate_blend()

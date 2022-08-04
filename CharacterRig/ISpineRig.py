@@ -140,5 +140,5 @@ class ISpineRig(IRig):
         raise NotImplementedError()
 
     @abstractmethod
-    def setup_ik(self, waist_joint, spine2_joint, neck_joint):
+    def setup_ik(self):
         raise NotImplementedError()

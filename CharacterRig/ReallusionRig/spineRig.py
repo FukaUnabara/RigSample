@@ -142,7 +142,7 @@ class SpineRig(ISpineRig):
         cmds.parentConstraint(self.spine1_fk_ctrl, self.spine1_fk_joint)
         cmds.parentConstraint(self.spine2_fk_ctrl, self.spine2_fk_joint)
 
-    def setup_ik(self, waist_joint, spine2_joint, neck_joint):
+    def setup_ik(self):
 
         start_joint = self.waist_ik_joint
         end_effector = self.neck_ik_joint
@@ -162,6 +162,9 @@ class SpineRig(ISpineRig):
 
         if not cmds.listRelatives(neck_ik_ctrl_joint, parent=True)[0] == self.neck_ik_ctrl:
             cmds.parent(neck_ik_ctrl_joint, self.neck_ik_ctrl)
+        
+        cmds.parent(spine_ik_handle, f"{self.__namespace}:ik")
+        cmds.setAttr(f"{ik_curve}.v", False)
 
         cmds.skinCluster(neck_ik_ctrl_joint, waist_ik_ctrl_joint, ik_curve)
 
