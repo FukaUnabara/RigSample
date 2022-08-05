@@ -158,11 +158,13 @@ class SpineRig(ISpineRig):
         neck_ik_ctrl_joint = cmds.joint()
         cmds.pointConstraint(end_effector, neck_ik_ctrl_joint)
 
-        cmds.delete(neck_ik_ctrl_joint, waist_ik_ctrl_joint, cn=True)
-
         if not cmds.listRelatives(neck_ik_ctrl_joint, parent=True)[0] == self.neck_ik_ctrl:
             cmds.parent(neck_ik_ctrl_joint, self.neck_ik_ctrl)
-        
+
+        cmds.delete(neck_ik_ctrl_joint, waist_ik_ctrl_joint, cn=True)
+        cmds.makeIdentity(waist_ik_ctrl_joint, apply=True, t=True, r=True, s=True)
+        cmds.makeIdentity(neck_ik_ctrl_joint, apply=True, t=True, r=True, s=True)
+
         cmds.parent(spine_ik_handle, f"{self.__namespace}:ik")
         cmds.setAttr(f"{ik_curve}.v", False)
 
@@ -175,7 +177,6 @@ class SpineRig(ISpineRig):
                 cmds.setAttr(f"{fk}.{attr}", lock=lock)
                 cmds.setAttr(f"{fk}.{attr}", lock=lock)
 
-        cmds.setAttr(f"{self.waist_ik_ctrl}.t", lock=True)
         cmds.setAttr(f"{self.waist_ik_ctrl}.s", lock=True)
         cmds.setAttr(f"{self.neck_ik_ctrl}.s", lock=True)
 
