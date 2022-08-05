@@ -16,6 +16,22 @@ class Foot(IFoot):
     def toe_joint(self):
         return f"{self.__namespace}:CC_Base_{self.__side}_ToeBase"
 
-    @classmethod
-    def instantiate(cls, namespace, is_left):
-        return cls(namespace, is_left)
+    @property
+    def pinky_joint(self):
+        return f"{self.__namespace}:CC_Base_{self.__side}_PinkyToe1"
+
+    @property
+    def ring_joint(self):
+        return f"{self.__namespace}:CC_Base_{self.__side}_RingToe1"
+
+    @property
+    def middle_joint(self):
+        return f"{self.__namespace}:CC_Base_{self.__side}_MidToe1"
+
+    @property
+    def index_joint(self):
+        return f"{self.__namespace}:CC_Base_{self.__side}_IndexToe1"
+
+    @property
+    def big_toe_joint(self):
+        return f"{self.__namespace}:CC_Base_{self.__side}_BigToe1"

@@ -36,6 +36,10 @@ class IFootRig(IRig):
         raise NotImplementedError()
 
     @property
+    def ball_reverse_ctrl(self):
+        raise NotImplementedError()
+
+    @property
     @abstractmethod
     def roll_out_ctrl_pos(self):
         raise NotImplementedError()
@@ -52,12 +56,67 @@ class IFootRig(IRig):
 
     @property
     @abstractmethod
+    def ball_reverse_ctrl_pos(self):
+        raise NotImplementedError()
+
+    @property
+    @abstractmethod
     def toe_ik_handle(self):
         raise NotImplementedError()
 
     @property
     @abstractmethod
+    def big_toe_ik_handle(self):
+        raise NotImplementedError()
+
+    @property
+    @abstractmethod
+    def index_toe_ik_handle(self):
+        raise NotImplementedError()
+
+    @property
+    @abstractmethod
+    def middle_toe_ik_handle(self):
+        raise NotImplementedError()
+
+    @property
+    @abstractmethod
+    def ring_toe_ik_handle(self):
+        raise NotImplementedError()
+
+    @property
+    @abstractmethod
+    def pinky_toe_ik_handle(self):
+        raise NotImplementedError()
+
+    @property
+    @abstractmethod
     def toe_ik_handle_blend_attr(self):
+        raise NotImplementedError()
+
+    @property
+    @abstractmethod
+    def big_toe_ik_handle_blend_attr(self):
+        raise NotImplementedError()
+
+    @property
+    @abstractmethod
+    def index_toe_ik_handle_blend_attr(self):
+        raise NotImplementedError()
+
+    @property
+    @abstractmethod
+    def middle_toe_ik_handle_blend_attr(self):
+        raise NotImplementedError()
+
+    @property
+    @abstractmethod
+    def ring_toe_ik_handle_blend_attr(self):
+        raise NotImplementedError()
+
+    @property
+    @abstractmethod
+    def pinky_toe_ik_handle_blend_attr(self):
         raise NotImplementedError()
 
     @property
@@ -71,7 +130,7 @@ class IFootRig(IRig):
         raise NotImplementedError()
 
     @abstractmethod
-    def setup_reverse(self, heel_joint, toe_joint, leg_ik_handle):
+    def setup_reverse(self, foot_joint, toe_joint, big_thumb_joint, index_joint, middle_joint, ring_joint, pinky_joint):
         raise NotImplementedError()
 
     @abstractmethod
