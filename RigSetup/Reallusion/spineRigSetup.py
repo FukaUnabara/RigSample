@@ -77,6 +77,28 @@ class SpineRigSetup(IRigSetup):
         cmds.setAttr(f"{ik_curve}.v", False)
         cmds.skinCluster(neck_ik_ctrl_joint, spine_ik_ctrl_joint, hip_ik_ctrl_joint, ik_curve)
 
+        self.__setup_ik_roll(spine_ik_handle)
+
+    # y軸回転の設定
+    def __setup_ik_roll(self, spine_ik_handle):
+        roll_pma_node = cmds.createNode("plusMinusAverage")
+        cmds.connectAttr(f"{self.__rig.waist_ik_ctrl}.ry", f"{roll_pma_node}.input1D[0]", f=True)
+        cmds.connectAttr(f"{self.__rig.spine_ik_ctrl}.ry", f"{roll_pma_node}.input1D[1]", f=True)
+        cmds.connectAttr(f"{roll_pma_node}.output1D", f"{spine_ik_handle}.roll", f=True)
+
+        waist_divide_node = cmds.createNode("multiplyDivide")
+        cmds.connectAttr(f"{self.__rig.waist_ik_ctrl}.ry", f"{waist_divide_node}.input1X", f=True)
+        cmds.setAttr(f"{waist_divide_node}.input2X", -1)
+
+        twist_pma_node = cmds.createNode("plusMinusAverage")
+        cmds.connectAttr(f"{waist_divide_node}.outputX", f"{twist_pma_node}.input1D[0]", f=True)
+        cmds.connectAttr(f"{self.__rig.neck_ik_ctrl}.ry", f"{twist_pma_node}.input1D[1]", f=True)
+        cmds.connectAttr(f"{self.__rig.spine_ik_ctrl}.ry", f"{twist_pma_node}.input1D[2]", f=True)
+
+        cmds.connectAttr(f"{twist_pma_node}.output1D", f"{spine_ik_handle}.twist", f=True)
+
+        # cmds.connectAttr(f"{self.__rig.neck_ik_ctrl}.ry")
+
     def __constraint_fk(self):
         duplicated = cmds.duplicate(self.__spine.joints, po=True)
         for fk_joint in range(len(duplicated)):
