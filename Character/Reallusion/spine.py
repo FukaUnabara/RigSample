@@ -25,7 +25,3 @@ class Spine(ISpine):
     @property
     def joints(self):
         return [self.joint_waist, self.joint_spine1, self.joint_spine2, self.joint_neck]
-
-    @classmethod
-    def instantiate(cls, namespace):
-        return cls(namespace)

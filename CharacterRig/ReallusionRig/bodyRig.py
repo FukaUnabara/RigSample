@@ -28,15 +28,6 @@ class BodyRig(IBodyRig):
         cmds.setAttr(f"{self.body_ctrl}.s", lock=lock)
         cmds.setAttr(f"{self.body_ctrl}.visibility", lock=lock)
 
-    def align_ctrl_to(self, target):
-        cmds.parentConstraint(target, self.body_ctrl_pos)
-        cmds.delete(target, cn=True)
-
-        cmds.xform(self.body_ctrl, t=(0, 0, 0), ro=(0, 0, 0), s=(1, 1, 1))
-
-    def constraint_ctrl(self, driven):
-        cmds.parentConstraint(self.body_ctrl, driven)
-
     def create_rig_set(self):
         if cmds.objExists(self.rig_set):
             cmds.delete(self.rig_set, cn=True)

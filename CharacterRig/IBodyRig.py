@@ -26,13 +26,5 @@ class IBodyRig(IRig):
         raise NotImplementedError()
 
     @abstractmethod
-    def align_ctrl_to(self, target):
-        raise NotImplementedError()
-
-    @abstractmethod
-    def constraint_ctrl(self, driven):
-        raise NotImplementedError()
-
-    @abstractmethod
     def create_rig_set(self):
         raise NotImplementedError()

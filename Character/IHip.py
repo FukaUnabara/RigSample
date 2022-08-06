@@ -7,8 +7,3 @@ class IHip(metaclass=ABCMeta):
     @abstractmethod
     def hip_joint(self):
         raise NotImplementedError()
-
-    @classmethod
-    @abstractmethod
-    def instantiate(cls, namespace):
-        raise NotImplementedError()

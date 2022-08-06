@@ -2,6 +2,7 @@ from abc import ABCMeta, abstractmethod
 
 
 class ISpine(metaclass=ABCMeta):
+
     @property
     @abstractmethod
     def joint_waist(self):
@@ -25,9 +26,4 @@ class ISpine(metaclass=ABCMeta):
     @property
     @abstractmethod
     def joints(self):
-        raise NotImplementedError()
-
-    @classmethod
-    @abstractmethod
-    def instantiate(cls, namespace):
         raise NotImplementedError()
