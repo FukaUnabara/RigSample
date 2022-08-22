@@ -68,6 +68,17 @@ RigSample<br>
 
 # 使い方
 
-1. Mayaのscriptsフォルダ以下にこのツールを配置してください。
-2. Maya/Sample.maを開いてください。
-3. Main.pyをスクリプトエディタから実行してください。これでリグのセットアップは完了です。
+1. Mayaのscriptsフォルダ以下にRigSampleフォルダを作成してください。
+2. RigSampleフォルダ以下にこのツールの中身を配置してください。
+
+このとき、フォルダ階層は以下のようなフォルダ構成になります。
+
+scripts/RigSample<br>
+├───Character<br>
+├───CharacterRig<br>
+├───Images<br>
+├───Maya<br>
+└───RigSetup<br>
+
+3. Maya/Sample.maを開いてください。
+4. Main.pyをスクリプトエディタから実行してください。これでリグのセットアップは完了です。
