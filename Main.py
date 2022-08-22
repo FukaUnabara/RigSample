@@ -13,6 +13,7 @@ from RigSample.Character.Reallusion.leg import Leg
 from RigSample.Character.Reallusion.root import Root
 from RigSample.Character.Reallusion.shoulder import Shoulder
 from RigSample.Character.Reallusion.spine import Spine
+from RigSample.Character.Reallusion.pelvis import Pelvis
 from RigSample.CharacterRig.ReallusionRig.aimRig import AimRig
 from RigSample.CharacterRig.ReallusionRig.armRig import ArmRig
 from RigSample.CharacterRig.ReallusionRig.bodyRig import BodyRig
@@ -23,6 +24,7 @@ from RigSample.CharacterRig.ReallusionRig.legRig import LegRig
 from RigSample.CharacterRig.ReallusionRig.rootRig import RootRig
 from RigSample.CharacterRig.ReallusionRig.shoulderRig import ShoulderRig
 from RigSample.CharacterRig.ReallusionRig.spineRig import SpineRig
+from RigSample.CharacterRig.ReallusionRig.pelvisRig import PelvisRig
 from RigSample.RigSetup.Reallusion.aimRigSetup import AimRigSetup
 from RigSample.RigSetup.Reallusion.armRigSetup import ArmSetup
 from RigSample.RigSetup.Reallusion.bodyRigSetup import BodyRigSetup
@@ -34,6 +36,7 @@ from RigSample.RigSetup.Reallusion.legRigSetup import LegSetup
 from RigSample.RigSetup.Reallusion.rootRigSetup import RootRigSetup
 from RigSample.RigSetup.Reallusion.shoulderRigSetup import ShoulderRigSetup
 from RigSample.RigSetup.Reallusion.spineRigSetup import SpineRigSetup
+from RigSample.RigSetup.Reallusion.pelvisRigSetup import PelvisRigSetup
 
 
 class SetupRig:
@@ -86,7 +89,7 @@ class SetupRig:
 
         spine = Spine(namespace)
         spine_rig = SpineRig(namespace)
-        self.spine_setup = SpineRigSetup(spine, spine_rig,body_rig)
+        self.spine_setup = SpineRigSetup(spine, spine_rig, body_rig)
 
         l_finger = Finger(namespace, is_left=True)
         l_finger_rig = FingerRig(namespace, is_left=True)
@@ -99,6 +102,10 @@ class SetupRig:
         eye = Eye(namespace)
         aim_rig = AimRig(namespace)
         self.aim_rig_setup = AimRigSetup(eye, aim_rig)
+
+        pelvis = Pelvis(namespace)
+        pelvis_rig = PelvisRig(namespace)
+        self.pelvis_rig_setup = PelvisRigSetup(pelvis, pelvis_rig)
 
     def setup(self):
         scene_path = cmds.file(q=True, sn=True)
@@ -128,6 +135,7 @@ class SetupRig:
         self.aim_rig_setup.align_ctrls()
         self.l_foot_setup.align_ctrls()
         self.r_foot_setup.align_ctrls()
+        self.pelvis_rig_setup.align_ctrls()
 
         print("Constraint controllers")
         self.root_setup.constraint_ctrls()
@@ -144,6 +152,7 @@ class SetupRig:
         self.aim_rig_setup.constraint_ctrls()
         self.l_foot_setup.constraint_ctrls()
         self.r_foot_setup.constraint_ctrls()
+        self.pelvis_rig_setup.constraint_ctrls()
 
         print("Lock controllers")
         self.root_setup.lock_ctrls()
@@ -160,6 +169,7 @@ class SetupRig:
         self.aim_rig_setup.lock_ctrls()
         self.l_foot_setup.lock_ctrls()
         self.r_foot_setup.lock_ctrls()
+        self.pelvis_rig_setup.lock_ctrls()
 
 
 if __name__ == '__main__':

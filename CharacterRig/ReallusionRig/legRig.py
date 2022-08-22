@@ -96,7 +96,7 @@ class LegRig(iLegRig.ILegRig):
 
     @property
     def ik_joints_parent(self) -> str:
-        return f"{self.__namespace}:body_ctrl"
+        return f"{self.__namespace}:Pelvis_ctrl"
 
     @property
     def leg_ik_handle(self) -> str:
@@ -227,7 +227,3 @@ class LegRig(iLegRig.ILegRig):
 
     def __remove_namespace(self, ctrl):
         return ctrl.split(":")[1]
-
-    @classmethod
-    def instantiate(cls, namespace: str, is_left: bool = True):
-        return cls(namespace, is_left)
